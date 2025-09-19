@@ -1,0 +1,44 @@
+/* src/index.css */
+
+/* Importando uma fonte futurista do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap');
+
+/* Definindo nossa paleta de cores como variáveis CSS para fácil acesso */
+:root {
+  --cor-fundo: #1a0529; /* Um roxo bem escuro, quase preto */
+  --cor-principal: #330859;
+  --roxo-brilhante: #4F238C;
+  --magenta-detalhe: #720F4B;
+  --texto-principal: #f0e6ff;
+  --texto-secundario: #c5a6f3;
+  --brilho-neon: 0 0 5px #c5a6f3, 0 0 10px #c5a6f3, 0 0 15px #4F238C;
+}
+
+/* Reset básico e estilos globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--texto-principal);
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+  background-size: 25px 25px; /* Efeito de grade sutil */
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: var(--brilho-neon);
+}

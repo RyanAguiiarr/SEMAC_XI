@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap");
+
+:root {
+  /* Cores Principais */
+  --cor-fundo: #ffffff;
+  --cor-primaria: #4f238c;
+  --cor-secundaria: #720f4b;
+  --cor-destaque: #330859;
+
+  /* Cores de Texto */
+  --texto-principal: #333333;
+  --texto-secundario: rgba(51, 51, 51, 0.8);
+  --texto-terciario: rgba(51, 51, 51, 0.6);
+
+  /* Efeitos Sutis */
+  --blur-effect: blur(5px);
+  --sombra-suave: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --sombra-hover: 0 4px 15px rgba(79, 35, 140, 0.15);
+
+  /* Gradientes Sutis */
+  --gradient-primario: linear-gradient(135deg, #4f238c, #5a2b9c);
+  --gradient-hover: linear-gradient(135deg, #5a2b9c, #4f238c);
+  --gradient-background: linear-gradient(45deg, #ffffff, #f5f5ff);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--cor-fundo);
+  color: var(--texto-principal);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.title-large {
+  font-family: "Syncopate", sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.2;
+  background: var(--gradient-primario);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--glow-primario);
+}
+
+.glass-effect {
+  background: rgba(10, 0, 20, 0.3);
+  backdrop-filter: var(--blur-effect);
+  -webkit-backdrop-filter: var(--blur-effect);
+  border: 1px solid rgba(79, 35, 140, 0.2);
+  box-shadow: var(--glow-primario);
+}
+
+.button-primary {
+  font-family: "Orbitron", sans-serif;
+  background: var(--gradient-primario);
+  border: none;
+  padding: 1rem 2rem;
+  color: var(--texto-principal);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button-primary:hover {
+  background: var(--gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-secundario);
+}
+
+/* Grid Premium */
+.grid-premium {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  .grid-premium {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+}
+
+/* Animações */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(79, 35, 140, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(79, 35, 140, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(79, 35, 140, 0.5);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.glow-animation {
+  animation: glow 3s ease-in-out infinite;
+}

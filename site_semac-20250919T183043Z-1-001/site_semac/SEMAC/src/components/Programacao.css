@@ -1,0 +1,309 @@
+/* src/components/Programacao.css */
+/* src/components/Programacao.css */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotateX(0); }
+  50% { transform: translateY(-10px) rotateX(5deg); }
+  100% { transform: translateY(0) rotateX(0); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(79, 35, 140, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(79, 35, 140, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(79, 35, 140, 0.5); }
+}
+
+.programacao-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.dia-section {
+  margin-bottom: 4rem;
+  perspective: 2000px;
+}
+
+.dia-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #4f238c;
+  text-shadow: 0 0 15px rgba(79, 35, 140, 0.8);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.dia-title:hover {
+  transform: translateZ(20px);
+  text-shadow: 0 0 25px rgba(79, 35, 140, 1);
+}
+
+.eventos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  perspective: 2000px;
+}
+
+.evento-card {
+  background: rgba(26, 5, 41, 0.8);
+  border: 1px solid rgba(79, 35, 140, 0.5);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.evento-card:hover {
+  transform: translateY(-15px) rotateX(10deg) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  animation: glow 2s infinite;
+}
+
+.card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(79, 35, 140, 0.4) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translateZ(20px);
+}
+
+.evento-card:hover .card-glow {
+  opacity: 1;
+}
+
+.evento-tipo {
+  display: inline-block;
+  background-color: #4f238c;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.evento-card:hover .evento-tipo {
+  background-color: #3b1a69;
+}
+
+.evento-titulo {
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+  color: #8a4dff;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px rgba(138, 77, 255, 0.3);
+  transform: translateZ(30px);
+}
+
+.evento-palestrante {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transform: translateZ(25px);
+}
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  transform-style: preserve-3d;
+  transform: translateZ(20px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.evento-card h3 {
+  font-size: 2rem;
+  margin: 1rem 0;
+  color: #fff;
+  transform: translateZ(35px);
+  transition: all 0.4s ease;
+  text-shadow: 0 0 25px rgba(138, 77, 255, 0.5);
+}
+
+.evento-card:hover h3 {
+  transform: translateZ(45px);
+  text-shadow: 0 0 35px rgba(138, 77, 255, 0.8);
+}
+
+.evento-palestrante {
+  color: #c5a6f3;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  transform: translateZ(25px);
+}
+
+.evento-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background-color: rgba(79, 35, 140, 0.2);
+  backdrop-filter: blur(8px);
+  transform: translateZ(15px);
+}
+
+.evento-horario {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-reserva {
+  background-color: #4f238c;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-reserva:hover {
+  background-color: #3b1a69;
+}
+
+.btn-reserva.reservado {
+  background-color: #2c8a3d;
+}
+
+.btn-reserva {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(45deg, #4f238c, #720f4b);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: translateZ(40px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-reserva::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.btn-reserva:hover::before {
+  left: 100%;
+}
+
+.btn-reserva.reservado {
+  background: linear-gradient(45deg, #2a9d8f, #264653);
+  animation: pulse 2s infinite;
+}
+
+/* Efeito de brilho ao passar o mouse */
+.evento-card:hover::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(138, 77, 255, 0.3),
+    transparent
+  );
+  z-index: -1;
+  animation: borderGlow 2s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+/* Efeito de gradiente dinâmico */
+.evento-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(138, 77, 255, 0.15) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.evento-card:hover::after {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .programacao-container {
+    padding: 2rem 1rem;
+  }
+
+  .programacao-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .eventos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .evento-card {
+    transform: none !important;
+  }
+}

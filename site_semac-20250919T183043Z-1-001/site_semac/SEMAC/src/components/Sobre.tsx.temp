@@ -1,0 +1,140 @@
+// src/components/Sobre.tsx
+import React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./Sobre.css";
+
+gsap.registerPlugin(ScrollTrigger);
+
+interface Feature {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
+  {
+    icon: "💡",
+    title: "Inovação Tecnológica",
+    description: "Explore as últimas tendências em computação e tecnologia"
+  },
+  {
+    icon: "🌐",
+    title: "Networking Profissional",
+    description: "Conecte-se com especialistas e profissionais da área"
+  },
+  {
+    icon: "🚀",
+    title: "Desenvolvimento Prático",
+    description: "Workshops hands-on e experiências práticas"
+  },
+  {
+    icon: "🎯",
+    title: "Carreira Tech",
+    description: "Insights valiosos sobre o mercado de trabalho"
+  }
+];
+
+const Sobre: React.FC = () => {
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.4], [0, 1, 1]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.4], [100, 0, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.4], [0.8, 1, 1]);
+
+  return (
+    <motion.section
+      className="sobre-container"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <motion.div className="sobre-hero" style={{ opacity, y, scale }}>
+        <motion.h2 
+          className="sobre-title"
+          data-text="XI Semana da Computação"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          XI Semana da Computação
+        </motion.h2>
+
+        <motion.div 
+          className="sobre-date"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <div className="date-box">
+            <span className="date-icon">📅</span>
+            <div className="date-content">
+              <h3>20-24 de Outubro</h3>
+              <p>2025</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.p 
+          className="main-text"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          Venha fazer parte da maior semana de computação do nosso campus!
+          Uma experiência única com palestras inspiradoras, workshops práticos
+          e oportunidades incríveis de networking com profissionais do mercado.
+        </motion.p>
+
+        <motion.div 
+          className="features-grid"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              className="feature-card"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 + index * 0.2 }}
+              whileHover={{ 
+                scale: 1.05,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <span className="feature-icon">{feature.icon}</span>
+              <h3 className="feature-title">{feature.title}</h3>
+              <p className="feature-description">{feature.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="hero-cta"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
+        >
+          <button className="cta-button">Inscreva-se Agora</button>
+        </motion.div>
+
+        <motion.div 
+          className="cyber-decorations"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 1 }}
+        >
+          <div className="cyber-line"></div>
+          <div className="cyber-line"></div>
+          <div className="cyber-line"></div>
+          <div className="cyber-line"></div>
+        </motion.div>
+      </motion.div>
+    </motion.section>
+  );
+};
+
+export default Sobre;
