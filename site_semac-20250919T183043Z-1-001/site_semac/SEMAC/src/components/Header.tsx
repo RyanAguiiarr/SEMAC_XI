@@ -1,141 +1,89 @@
 // src/components/Header.tsx
-import React, { useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./Header.css";
+import React from 'react';
+import { motion, type Variants } from 'framer-motion'; // 1. Importe o tipo 'Variants'
+import './Header.css';
 
-gsap.registerPlugin(ScrollTrigger);
-
-interface InfoCard {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-const infoCards: InfoCard[] = [
-  {
-    title: "Palestrantes Renomados",
-    description:
-      "Profissionais experientes compartilhando conhecimento de ponta",
-    icon: "",
-  },
-  {
-    title: "Networking",
-    description: "Conecte-se com profissionais e estudantes da �rea",
-    icon: "",
-  },
-  {
-    title: "Workshops Pr�ticos",
-    description: "Experi�ncia hands-on com as �ltimas tecnologias",
-    icon: "",
-  },
-  {
-    title: "Certifica��o",
-    description: "Certificado de participa��o para todas as atividades",
-    icon: "",
-  },
-];
+// 2. Adicione a tipagem explícita ': Variants' aqui
+const lineAnimation: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (custom: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, delay: custom * 0.2, ease: 'easeOut' },
+  }),
+};
 
 const Header: React.FC = () => {
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 200], [0, -50]);
-  const opacity = useTransform(scrollY, [0, 200], [1, 0]);
-  const scale = useTransform(scrollY, [0, 200], [1, 0.95]);
-  const headerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!headerRef.current) return;
-
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.out" },
-    });
-
-    tl.fromTo(
-      ".event-title",
-      { y: 100, opacity: 0, scale: 0.8 },
-      { y: 0, opacity: 1, scale: 1, duration: 1.2 }
-    )
-      .fromTo(
-        ".info-card",
-        { y: 50, opacity: 0, scale: 0.9 },
-        { y: 0, opacity: 1, scale: 1, duration: 0.8, stagger: 0.2 },
-        "-=0.8"
-      )
-      .fromTo(
-        ".cta-button",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5 },
-        "-=0.4"
-      );
-
-    // Background parallax
-    gsap.to(".header-bg-element", {
-      y: "30%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: headerRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
-  }, []);
-
+  // ... o resto do seu componente continua exatamente igual
   return (
-    <motion.div ref={headerRef} className="main-header" style={{ y, opacity }}>
-      <div className="header-bg-element"></div>
-      <div className="header-bg-element"></div>
+    <header className="main-header">
+      <div className="header-content">
+        <motion.img
+          src="/logo-nova.png" 
+          alt="Logo SEMAC"
+          className="header-logo"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+        />
 
-      <motion.div className="header-content" style={{ scale }}>
-        <h1 className="event-title" data-text="XI SEMANA DA COMPUTA��O">
-          XI SEMANA DA COMPUTA��O
-        </h1>
-
-        <div className="header-info">
-          {infoCards.map((card, index) => (
-            <motion.div
-              key={index}
-              className="info-card"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 8px 30px rgba(97, 218, 251, 0.3)",
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="info-icon">{card.icon}</span>
-              <h3>{card.title}</h3>
-              <p>{card.description}</p>
-            </motion.div>
-          ))}
+        <div className="title-container">
+          <motion.h1
+            className="event-title"
+            custom={1}
+            variants={lineAnimation}
+            initial="hidden"
+            animate="visible"
+          >
+            Semana da Computação
+          </motion.h1>
+          <motion.div
+            className="event-acronym"
+            custom={2}
+            variants={lineAnimation}
+            initial="hidden"
+            animate="visible"
+          >
+            XI SEMAC
+          </motion.div>
         </div>
+
+        <motion.p
+          className="event-subtitle"
+          custom={3}
+          variants={lineAnimation}
+          initial="hidden"
+          animate="visible"
+        >
+          De 20 a 24 de Outubro | IFSP Catanduva
+        </motion.p>
 
         <motion.button
           className="cta-button"
-          whileHover={{ scale: 1.05 }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
+          whileHover={{ scale: 1.05, boxShadow: '0 0 25px #764ABC' }}
           whileTap={{ scale: 0.95 }}
         >
-          Inscreva-se Agora
+          Garanta sua Vaga
         </motion.button>
+      </div>
 
+      <motion.div
+        className="scroll-indicator"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+      >
         <motion.div
-          className="scroll-indicator"
-          animate={{
-            y: [0, 10, 0],
-            opacity: [0.6, 1, 0.6],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <svg viewBox="0 0 24 24">
-            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-          </svg>
+          ↓
         </motion.div>
       </motion.div>
-    </motion.div>
+    </header>
   );
 };
 

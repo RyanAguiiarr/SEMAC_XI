@@ -124,15 +124,7 @@
   font-weight: 500;
   transform: translateZ(25px);
 }
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
-  transform-style: preserve-3d;
-  transform: translateZ(20px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
+  
 
 .evento-card h3 {
   font-size: 2rem;
@@ -306,4 +298,83 @@
   .evento-card {
     transform: none !important;
   }
+}
+
+
+/* Adicione estas novas classes ao seu Programacao.css */
+
+.horario-group {
+  margin-bottom: 2.5rem;
+}
+
+.horario-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  color: var(--texto-secundario);
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--roxo-brilhante);
+}
+
+/* A grade para os minicursos */
+.minicurso-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo */
+  gap: 1.5rem;
+}
+
+/* Em telas maiores, força 4 colunas */
+@media (min-width: 1200px) {
+  .minicurso-group {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Ajustes nos cards de minicurso para caberem melhor na grade */
+.minicurso-group .evento-card {
+  padding: 1.5rem; /* Menor padding */
+  transform: translateY(0) rotateX(0) scale(1) !important; /* Reseta transformações para evitar sobreposição */
+}
+
+.minicurso-group .evento-card:hover {
+  transform: translateY(-10px) scale(1.03) !important; /* Efeito de hover mais sutil */
+}
+
+.minicurso-group .evento-titulo {
+  font-size: 1.25rem; /* Fonte menor */
+}
+
+/* Wrapper para palestras e coffee breaks individuais */
+.evento-item-wrapper {
+  max-width: 700px;
+  margin: 0 auto 2rem; /* Centraliza e adiciona margem */
+}
+
+
+/* Estilo para o Coffee Break */
+.coffee-break-card {
+  text-align: center;
+  padding: 2rem;
+  margin: 0 auto;
+  border: 1px dashed var(--roxo-brilhante);
+  border-radius: 15px;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.coffee-icon {
+  font-size: 2.5rem;
+}
+
+.coffee-title {
+  font-size: 1.8rem;
+  color: var(--texto-secundario);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.coffee-horario {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
 }
