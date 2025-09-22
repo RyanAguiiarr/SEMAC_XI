@@ -13,13 +13,48 @@ const lineAnimation: Variants = {
   }),
 };
 
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
 const Header: React.FC = () => {
-  // ... o resto do seu componente continua exatamente igual
+  const [timeLeft, setTimeLeft] = React.useState<TimeLeft>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  React.useEffect(() => {
+    const eventDate = new Date('2025-10-23T09:00:00').getTime();
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const difference = eventDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60)
+        });
+      } else {
+        clearInterval(timer);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <header className="main-header">
       <div className="header-content">
         <motion.img
-          src="/logo-nova.png" 
+          src="/logo_nova_semac.png" 
           alt="Logo SEMAC"
           className="header-logo"
           initial={{ opacity: 0, scale: 0.5 }}
@@ -55,8 +90,32 @@ const Header: React.FC = () => {
           initial="hidden"
           animate="visible"
         >
-          De 20 a 24 de Outubro | IFSP Catanduva
+          De 23 a 27 de Outubro | IFSP Catanduva
         </motion.p>
+
+        <motion.div
+          className="countdown-container"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          <div className="countdown-item">
+            <span className="countdown-value">{timeLeft.days}</span>
+            <span className="countdown-label">Dias</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-value">{String(timeLeft.hours).padStart(2, '0')}</span>
+            <span className="countdown-label">Horas</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-value">{String(timeLeft.minutes).padStart(2, '0')}</span>
+            <span className="countdown-label">Minutos</span>
+          </div>
+          <div className="countdown-item">
+            <span className="countdown-value">{String(timeLeft.seconds).padStart(2, '0')}</span>
+            <span className="countdown-label">Segundos</span>
+          </div>
+        </motion.div>
 
         <motion.button
           className="cta-button"
