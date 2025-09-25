@@ -1,15 +1,8 @@
-/* src/components/Programacao.css */
-/* src/components/Programacao.css */
+/* --- ANIMAÇÕES GERAIS --- */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
-}
-
-@keyframes float {
-  0% { transform: translateY(0) rotateX(0); }
-  50% { transform: translateY(-10px) rotateX(5deg); }
-  100% { transform: translateY(0) rotateX(0); }
 }
 
 @keyframes glow {
@@ -18,6 +11,13 @@
   100% { box-shadow: 0 0 5px rgba(79, 35, 140, 0.5); }
 }
 
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- CONTAINER PRINCIPAL --- */
 .programacao-container {
   max-width: 1400px;
   margin: 0 auto;
@@ -27,7 +27,6 @@
 
 .dia-section {
   margin-bottom: 4rem;
-  perspective: 2000px;
 }
 
 .dia-title {
@@ -36,25 +35,36 @@
   font-weight: 700;
   color: #fff;
   margin-bottom: 2.5rem;
-  padding-bottom: 0.5rem;
   border-bottom: 2px solid #4f238c;
-  text-shadow: 0 0 15px rgba(79, 35, 140, 0.8);
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease;
 }
 
-.dia-title:hover {
-  transform: translateZ(20px);
-  text-shadow: 0 0 25px rgba(79, 35, 140, 1);
+/* --- GRUPOS DE EVENTOS --- */
+.horario-group {
+  margin-bottom: 2.5rem;
 }
 
-.eventos-grid {
+.horario-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  color: #c5a6f3;
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid #8a4dff;
+}
+
+.palestras-group, .minicurso-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  perspective: 2000px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
+@media (min-width: 1200px) {
+  .minicurso-group {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- CARD DE EVENTO --- */
 .evento-card {
   background: rgba(26, 5, 41, 0.8);
   border: 1px solid rgba(79, 35, 140, 0.5);
@@ -64,12 +74,11 @@
   overflow: hidden;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  transform-style: preserve-3d;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .evento-card:hover {
-  transform: translateY(-15px) rotateX(10deg) scale(1.02);
+  transform: translateY(-15px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   animation: glow 2s infinite;
 }
@@ -77,17 +86,26 @@
 .card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgba(79, 35, 140, 0.4) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(circle at 50% 0%, rgba(79, 35, 140, 0.4) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
-  transform: translateZ(20px);
 }
 
 .evento-card:hover .card-glow {
+  opacity: 1;
+}
+
+.evento-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(138, 77, 255, 0.15) 0%, transparent 40%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.evento-card:hover::after {
   opacity: 1;
 }
 
@@ -98,101 +116,35 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-size: 0.875rem;
-  font-weight: 500;
   margin-bottom: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.evento-card:hover .evento-tipo {
-  background-color: #3b1a69;
 }
 
 .evento-titulo {
-  font-size: 1.75rem;
-  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   color: #8a4dff;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  text-shadow: 0 0 20px rgba(138, 77, 255, 0.3);
-  transform: translateZ(30px);
-}
-
-.evento-palestrante {
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transform: translateZ(25px);
-}
-  
-
-.evento-card h3 {
-  font-size: 2rem;
-  margin: 1rem 0;
-  color: #fff;
-  transform: translateZ(35px);
-  transition: all 0.4s ease;
-  text-shadow: 0 0 25px rgba(138, 77, 255, 0.5);
-}
-
-.evento-card:hover h3 {
-  transform: translateZ(45px);
-  text-shadow: 0 0 35px rgba(138, 77, 255, 0.8);
 }
 
 .evento-palestrante {
   color: #c5a6f3;
-  font-style: italic;
   margin-bottom: 1.5rem;
-  transform: translateZ(25px);
 }
 
 .evento-info {
   display: flex;
-  flex-wrap: wrap;
   gap: 1rem;
-  margin: 1rem 0;
   padding: 0.75rem;
   border-radius: 12px;
   background-color: rgba(79, 35, 140, 0.2);
-  backdrop-filter: blur(8px);
-  transform: translateZ(15px);
 }
 
 .evento-horario {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.875rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.btn-reserva {
-  background-color: #4f238c;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.75rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 1rem;
-  transition: all 0.3s ease;
-}
-
-.btn-reserva:hover {
-  background-color: #3b1a69;
-}
-
-.btn-reserva.reservado {
-  background-color: #2c8a3d;
 }
 
 .btn-reserva {
@@ -207,10 +159,10 @@
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
-  transform: translateZ(40px);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  margin-top: 1rem;
 }
 
 .btn-reserva::before {
@@ -220,12 +172,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: 0.5s;
 }
 
@@ -233,148 +180,204 @@
   left: 100%;
 }
 
-.btn-reserva.reservado {
-  background: linear-gradient(45deg, #2a9d8f, #264653);
-  animation: pulse 2s infinite;
+/* ================================================= */
+/* --- ESTILOS DO MODAL DE INSCRIÇÃO PREMIUM --- */
+/* ================================================= */
+
+.modal-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-/* Efeito de brilho ao passar o mouse */
-.evento-card:hover::before {
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(10, 5, 20, 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+.modal-container {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  margin: 1rem;
+  background: rgba(26, 5, 41, 0.95);
+  border: 1px solid rgba(138, 77, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  padding: 2.5rem;
+  overflow: hidden;
+  color: #fff;
+}
+
+.modal-container::before {
   content: '';
   position: absolute;
   inset: -1px;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(138, 77, 255, 0.3),
-    transparent
-  );
-  z-index: -1;
-  animation: borderGlow 2s linear infinite;
+  background: linear-gradient(45deg, transparent, rgba(138, 77, 255, 0.4), transparent);
+  z-index: -2;
+  background-size: 200% 200%;
+  animation: borderGlow 3s linear infinite;
 }
 
-@keyframes borderGlow {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 200% 0%;
-  }
-}
-
-/* Efeito de gradiente dinâmico */
-.evento-card::after {
+.modal-container::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at var(--x, 50%) var(--y, 50%),
-    rgba(138, 77, 255, 0.15) 0%,
-    transparent 100%
-  );
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(138, 77, 255, 0.15) 0%, transparent 40%);
   pointer-events: none;
-  transition: opacity 0.3s;
-  opacity: 0;
+  z-index: -1;
 }
 
-.evento-card:hover::after {
-  opacity: 1;
-}
-
-@media (max-width: 768px) {
-  .programacao-container {
-    padding: 2rem 1rem;
-  }
-
-  .programacao-container h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .eventos-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .evento-card {
-    transform: none !important;
-  }
-}
-
-
-/* Adicione estas novas classes ao seu Programacao.css */
-
-.horario-group {
-  margin-bottom: 2.5rem;
-}
-
-.horario-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.5rem;
-  color: var(--texto-secundario);
-  margin-bottom: 1.5rem;
-  padding-left: 1rem;
-  border-left: 3px solid var(--roxo-brilhante);
-}
-
-/* A grade para os minicursos */
-.minicurso-group {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo */
+.modal-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-}
-
-/* Em telas maiores, força 4 colunas */
-@media (min-width: 1200px) {
-  .minicurso-group {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Ajustes nos cards de minicurso para caberem melhor na grade */
-.minicurso-group .evento-card {
-  padding: 1.5rem; /* Menor padding */
-  transform: translateY(0) rotateX(0) scale(1) !important; /* Reseta transformações para evitar sobreposição */
-}
-
-.minicurso-group .evento-card:hover {
-  transform: translateY(-10px) scale(1.03) !important; /* Efeito de hover mais sutil */
-}
-
-.minicurso-group .evento-titulo {
-  font-size: 1.25rem; /* Fonte menor */
-}
-
-/* Wrapper para palestras e coffee breaks individuais */
-.evento-item-wrapper {
-  max-width: 700px;
-  margin: 0 auto 2rem; /* Centraliza e adiciona margem */
-}
-
-
-/* Estilo para o Coffee Break */
-.coffee-break-card {
   text-align: center;
-  padding: 2rem;
-  margin: 0 auto;
-  border: 1px dashed var(--roxo-brilhante);
-  border-radius: 15px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   background: transparent;
-  backdrop-filter: none;
-}
-
-.coffee-icon {
-  font-size: 2.5rem;
-}
-
-.coffee-title {
-  font-size: 1.8rem;
-  color: var(--texto-secundario);
-  margin-top: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.coffee-horario {
+  border: none;
   color: rgba(255, 255, 255, 0.7);
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-content h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #c5a6f3;
+  text-shadow: 0 0 15px rgba(138, 77, 255, 0.5);
+  margin: 0;
+}
+
+.modal-content h3 {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: -0.5rem 0 1rem 0;
+  font-weight: 400;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #c5a6f3;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(79, 35, 140, 0.2);
+  border: 1px solid rgba(138, 77, 255, 0.3);
+  border-radius: 12px;
+  color: white;
   font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #a855f7;
+  background: rgba(79, 35, 140, 0.4);
+  box-shadow: 0 0 15px rgba(138, 77, 255, 0.3);
+}
+
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(45deg, #4f238c, #720f4b);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.submit-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.submit-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #333;
+}
+
+.mensagem {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.mensagem.sucesso {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #4ade80;
+}
+
+.mensagem.erro {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
 }

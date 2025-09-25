@@ -90,7 +90,7 @@ const Header: React.FC = () => {
           initial="hidden"
           animate="visible"
         >
-          De 23 a 27 de Outubro | IFSP Catanduva
+          De 20 a 24 de Outubro | IFSP Catanduva
         </motion.p>
 
         <motion.div
