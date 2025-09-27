@@ -66,45 +66,51 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({ isOpen, onClose, evento
     setIsLoading(true);
     setMensagem({ tipo: null, texto: '' });
 
+    //'https://semac-backend-app.onrender.com/inscrito'
+
     try {
-      await axios.post('https://semac-backend-app.onrender.com/inscrito', {
-         nome_completo: formData.nome_completo,
-         email: formData.email,
-         palestras: [{ id: evento.id }]
-       });
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulação
+  await axios.post('http://172.17.0.1:8080/inscrito', {
+    nome_completo: formData.nome_completo,
+    email: formData.email,
+    palestras: [{ id: evento.id }]
+  });
+  await new Promise(resolve => setTimeout(resolve, 1500)); // Simulação
 
-      setMensagem({ tipo: 'sucesso', texto: 'Inscrição realizada com sucesso!' });
+  setMensagem({ tipo: 'sucesso', texto: 'Inscrição realizada com sucesso!' });
 
-      setTimeout(() => {
-        setFormData({ nome_completo: '', email: '' });
-        onClose();
-        setMensagem({ tipo: null, texto: '' });
-      }, 2000);
-    } catch (error: any) {
-  let mensagemFinal = 'Erro ao realizar inscrição. Tente novamente.'; // Define uma mensagem padrão
+  setTimeout(() => {
+    setFormData({ nome_completo: '', email: '' });
+    onClose();
+    setMensagem({ tipo: null, texto: '' });
+  }, 2000);
+} catch (error: any) {
+  let mensagemFinal = 'Erro ao realizar inscrição. Tente novamente.';
 
-  // Verifica se existe uma resposta com dados do backend
   if (error.response?.data) {
-    // Garante que estamos trabalhando com uma string
-    const textoCompleto = String(error.response.data.message || error.response.data);
+    const data = error.response.data;
 
-    // Quebra a string em todos os lugares onde "java.lang.Exception: " aparece
-    // e pega o último elemento do array resultante.
-    const partes = textoCompleto.split('java.lang.Exception: ');
-    const ultimaParte = partes.pop()?.trim(); // .pop() pega o último, .trim() remove espaços
+    // Se for string, usa direto. Se for objeto, tenta pegar message ou serializa o objeto.
+    const textoCompleto =
+      typeof data === "string"
+        ? data
+        : data.message || JSON.stringify(data, null, 2);
 
-    // Se a última parte não for vazia, usa ela como a mensagem final
+    // Tenta extrair a mensagem final caso venha com "java.lang.Exception: ..."
+    const partes = textoCompleto.split("java.lang.Exception: ");
+    const ultimaParte = partes.pop()?.trim();
+
     if (ultimaParte) {
       mensagemFinal = ultimaParte;
+    } else {
+      mensagemFinal = textoCompleto;
     }
   }
 
   setMensagem({ tipo: 'erro', texto: mensagemFinal });
-  console.log(error);
+  console.error("Erro inscrição:", error);
 } finally {
-      setIsLoading(false);
-    }
+  setIsLoading(false);
+}
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
