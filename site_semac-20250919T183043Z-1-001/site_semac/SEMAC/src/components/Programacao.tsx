@@ -28,20 +28,20 @@ interface InscricaoModalProps {
 // --- DADOS DA PROGRAMAÇÃO ---
 const programacao: Evento[] = [
   // ... (seus dados de programação permanecem os mesmos)
-  { id: 1, dia: 'Segunda-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Ronaldo', titulo: 'Mercado de Trabalho' },
-  { id: 2, dia: 'Segunda-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Marcio (IFSP)', titulo: 'IA em Cibersegurança' },
-  { id: 3, dia: 'Terça-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Diego (Unesp)', titulo: 'Visão Computacional, Robótica: desafios entre sensores' },
-  { id: 4, dia: 'Terça-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Marcus', titulo: 'Cultura de Inovação do Google e IA' },
-  { id: 5, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'Paulo Zanluqui', titulo: 'Trilha Frontend', vagas: 30 },
-  { id: 6, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Backend', vagas: 30 },
-  { id: 7, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Dev. + Docker', vagas: 30 },
-  { id: 8, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Deploy + DNS', vagas: 30 },
-  { id: 9, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'Paulo Zanluqui', titulo: 'Trilha Frontend', vagas: 30 },
-  { id: 10, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Backend', vagas: 30 },
-  { id: 11, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Dev. + Docker', vagas: 30 },
-  { id: 12, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Deploy + DNS', vagas: 30 },
-  { id: 13, dia: 'Sexta-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Yuri', titulo: 'IOT na Tecnologia' },
-  { id: 14, dia: 'Sexta-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Fabio', titulo: 'Evolução da tecnologia dentro de uma operadora' },
+  { id: 102, dia: 'Segunda-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Ronaldo', titulo: 'Mercado de Trabalho' },
+  { id: 103, dia: 'Segunda-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Marcio (IFSP)', titulo: 'IA em Cibersegurança' },
+  { id: 104, dia: 'Terça-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Diego (Unesp)', titulo: 'Visão Computacional, Robótica: desafios entre sensores' },
+  { id: 105, dia: 'Terça-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Marcus', titulo: 'Cultura de Inovação do Google e IA' },
+  { id: 106, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'Paulo Zanluqui', titulo: 'Trilha Frontend', vagas: 30 },
+  { id: 107, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Backend', vagas: 30 },
+  { id: 108, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Dev. + Docker', vagas: 30 },
+  { id: 109, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Deploy + DNS', vagas: 30 },
+  { id: 110, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'Paulo Zanluqui', titulo: 'Trilha Frontend', vagas: 30 },
+  { id: 111, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Backend', vagas: 30 },
+  { id: 113, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Dev. + Docker', vagas: 30 },
+  { id: 112, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Deploy + DNS', vagas: 30 },
+  { id: 114, dia: 'Sexta-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Yuri', titulo: 'IOT na Tecnologia' },
+  { id: 115, dia: 'Sexta-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Fabio', titulo: 'Evolução da tecnologia dentro de uma operadora' },
 ];
 
 
