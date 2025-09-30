@@ -69,13 +69,10 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({ isOpen, onClose, evento
     //'https://semac-backend-app.onrender.com/inscrito'
 
     try {
-  await axios.post('https://semac-backend-app.onrender.com/inscricao', {
-    inscrito: {
-        nome_completo: formData.nome_completo,
-        email: formData.email,
-    },     
-    palestra: { id: evento.id }
-  });
+  await axios.post(`https://semac-backend-app.onrender.com/inscricao?palestra_id=${evento.id}`, {
+  nome_completo: formData.nome_completo,
+  email: formData.email
+});
   await new Promise(resolve => setTimeout(resolve, 1500)); // Simulação
 
   setMensagem({ tipo: 'sucesso', texto: 'Inscrição realizada com sucesso!' });
