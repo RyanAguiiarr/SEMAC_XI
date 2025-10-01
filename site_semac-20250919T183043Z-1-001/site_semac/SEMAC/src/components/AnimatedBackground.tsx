@@ -62,7 +62,7 @@ const AnimatedBackground = () => {
     >
       <Canvas
         camera={{ position: [0, 0, 5] }}
-        style={{ background: "linear-gradient(to bottom, #1a0529, #330859)" }}
+        style={{ background: "transparent" }}
       >
         <ambientLight intensity={0.3} />
         <pointLight position={[10, 10, 10]} intensity={2} color="#4F238C" />
