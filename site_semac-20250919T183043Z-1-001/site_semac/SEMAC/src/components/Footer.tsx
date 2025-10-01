@@ -11,9 +11,9 @@ const Footer: React.FC = () => {
       <div className="footer-content">
         <p>&copy; {currentYear} XI SEMAC - IFSP Catanduva. Todos os direitos reservados.</p>
         <div className="social-links">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+          <a href="https://www.instagram.com/ifspcatanduva?igsh=OWJyemo5ZjczZHhh" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
           <a href="https://github.com" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+          <a href="https://www.linkedin.com/school/ifspoficial/posts/?feedView=all" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
         </div>
       </div>
     </footer>

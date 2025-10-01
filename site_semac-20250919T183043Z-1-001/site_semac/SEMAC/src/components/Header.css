@@ -87,13 +87,43 @@
   font-size: 1.2rem;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(135deg, #61DAFB 0%, #764ABC 100%);
+  background: linear-gradient(45deg, #4f238c, #720f4b);
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(97, 218, 251, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-top: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.cta-button:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  animation: glow 2s infinite;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(79, 35, 140, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(79, 35, 140, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(79, 35, 140, 0.5); }
 }
 
 .scroll-indicator {
@@ -109,12 +139,34 @@
   display: flex;
   gap: 2rem;
   margin: 2rem 0;
-  padding: 1.5rem;
-  background: rgba(79, 35, 140, 0.2);
-  backdrop-filter: blur(10px);
+  padding: 2rem;
+  background: rgba(26, 5, 41, 0.8);
+  border: 1px solid rgba(79, 35, 140, 0.5);
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-container:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  animation: glow 2s infinite;
+}
+
+.countdown-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(79, 35, 140, 0.4) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.countdown-container:hover::after {
+  opacity: 1;
 }
 
 .countdown-item {
@@ -123,23 +175,25 @@
   align-items: center;
   min-width: 100px;
   padding: 1rem;
-  background: rgba(97, 218, 251, 0.1);
-  border-radius: 15px;
+  background: rgba(79, 35, 140, 0.2);
+  border-radius: 12px;
   transition: all 0.3s ease;
-  border: 1px solid rgba(97, 218, 251, 0.2);
+  border: 1px solid rgba(79, 35, 140, 0.3);
+  position: relative;
+  z-index: 1;
 }
 
 .countdown-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.2);
-  background: rgba(97, 218, 251, 0.15);
+  box-shadow: 0 5px 15px rgba(79, 35, 140, 0.3);
+  background: rgba(79, 35, 140, 0.3);
 }
 
 .countdown-value {
   font-size: 3rem;
   font-weight: bold;
-  color: #61DAFB;
-  text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+  color: #c5a6f3;
+  text-shadow: 0 0 15px rgba(138, 77, 255, 0.5);
   font-family: 'Space Grotesk', sans-serif;
   line-height: 1;
 }
@@ -147,6 +201,9 @@
 .countdown-label {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
   margin-top: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;

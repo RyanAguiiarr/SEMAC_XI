@@ -28,20 +28,20 @@ interface InscricaoModalProps {
 // --- DADOS DA PROGRAMAÇÃO ---
 const programacao: Evento[] = [
   // ... (seus dados de programação permanecem os mesmos)
-  { id: 102, dia: 'Segunda-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Ronaldo', titulo: 'Mercado de Trabalho' },
-  { id: 103, dia: 'Segunda-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Marcio (IFSP)', titulo: 'IA em Cibersegurança' },
-  { id: 104, dia: 'Terça-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Diego (Unesp)', titulo: 'Visão Computacional, Robótica: desafios entre sensores' },
-  { id: 105, dia: 'Terça-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Marcus', titulo: 'Cultura de Inovação do Google e IA' },
+  { id: 102, dia: 'Segunda-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Ronaldo Cesar Pereira', titulo: 'Tendências, Demandas e Estratégias de Carreira' },
+  { id: 103, dia: 'Segunda-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Ronaldo Martins', titulo: 'Intrusões em aplicações web' },
+  { id: 104, dia: 'Terça-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Diego Bruno', titulo: 'Visão Computacional, Robótica: desafios entre sensores' },
+  { id: 105, dia: 'Terça-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Marcus Vinícius de Arruda Santos', titulo: 'Cultura de inovação do Google e momento de inteligência artificial' },
   { id: 106, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'Paulo Zanluqui', titulo: 'Trilha Frontend', vagas: 30 },
-  { id: 107, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Backend', vagas: 30 },
-  { id: 108, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Dev. + Docker', vagas: 30 },
-  { id: 109, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Deploy + DNS', vagas: 30 },
+  { id: 107, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'Thiago Aio', titulo: 'Trilha Backend', vagas: 30 },
+  { id: 108, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Frontend Mobile', vagas: 30 },
+  { id: 109, dia: 'Quarta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Backend', vagas: 30 },
   { id: 110, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'Paulo Zanluqui', titulo: 'Trilha Frontend', vagas: 30 },
-  { id: 111, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Backend', vagas: 30 },
-  { id: 113, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Dev. + Docker', vagas: 30 },
-  { id: 112, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Deploy + DNS', vagas: 30 },
-  { id: 114, dia: 'Sexta-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Yuri', titulo: 'IOT na Tecnologia' },
-  { id: 115, dia: 'Sexta-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Fabio', titulo: 'Evolução da tecnologia dentro de uma operadora' },
+  { id: 111, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'Thiago Aio', titulo: 'Trilha Backend', vagas: 30 },
+  { id: 113, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Frontend Mobile', vagas: 30 },
+  { id: 112, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Backend', vagas: 30 },
+  { id: 114, dia: 'Sexta-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Fábio Eduardo Marçaro', titulo: 'Evolução da tecnologia dentro de uma operadora' },
+  { id: 115, dia: 'Sexta-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Yuri Martins', titulo: 'IOT na tecnologia' },
 ];
 
 
@@ -229,7 +229,7 @@ const Programacao = () => {
         }, {} as Record<string, Evento[]>);
 
         return (
-          <div key={dia} className="dia-section">
+          <div key={dia} className="dia-section" data-dia={dia}>
             <h2 className="dia-title">{dia}</h2>
             {palestrasDoDia.length > 0 && (
               <div className="horario-group">
