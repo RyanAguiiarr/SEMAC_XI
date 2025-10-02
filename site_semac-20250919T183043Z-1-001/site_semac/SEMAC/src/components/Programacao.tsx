@@ -41,7 +41,7 @@ const programacao: Evento[] = [
   { id: 113, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Frontend Mobile', vagas: 30 },
   { id: 112, dia: 'Quinta-feira', horario: '19:00 - 22:30', tipo: 'Minicurso', palestrante: 'A definir', titulo: 'Trilha Backend', vagas: 30 },
   { id: 114, dia: 'Sexta-feira', horario: '19:00 - 20:40', tipo: 'Palestra', palestrante: 'Fábio Eduardo Marçaro', titulo: 'Evolução da tecnologia dentro de uma operadora' },
-  { id: 115, dia: 'Sexta-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Yuri Martins', titulo: 'IOT na tecnologia' },
+  { id: 115, dia: 'Sexta-feira', horario: '21:00 - 22:30', tipo: 'Palestra', palestrante: 'Yuri Martins', titulo: 'IOT' },
 ];
 
 
