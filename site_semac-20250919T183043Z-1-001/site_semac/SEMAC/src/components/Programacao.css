@@ -153,11 +153,12 @@
   background: linear-gradient(45deg, #4f238c, #720f4b);
   color: #fff;
   border: none;
-  border-radius: 12px;
+  border-radius: 12px;  /* Duolingo-style rectangular button */
   font-family: "Rajdhani", sans-serif;
   font-size: 1.1rem;
   font-weight: bold;
   text-transform: uppercase;
+  letter-spacing: 0.5px;  /* Improved text spacing */
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;

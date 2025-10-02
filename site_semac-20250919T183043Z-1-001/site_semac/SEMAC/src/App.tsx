@@ -1,14 +1,14 @@
-// src/App.tsx (versão limpa)
 import './index.css';
 import Header from './components/Header';
 import Sobre from './components/Sobre';
 import Programacao from './components/Programacao';
 import Footer from './components/Footer';
+import BackgroundImage from './components/BackgroundImage';
 
 const App = () => {
   return (
-    // Removemos os containers extras, simplificando a estrutura
-    <> 
+    <>
+      <BackgroundImage />
       <Header />
       <main>
         <Sobre />

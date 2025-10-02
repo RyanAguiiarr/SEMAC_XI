@@ -130,6 +130,12 @@ const Header: React.FC = () => {
           transition={{ duration: 0.5, delay: 1.2 }}
           whileHover={{ scale: 1.05, boxShadow: "0 0 25px #764ABC" }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => {
+            const programacaoElement = document.querySelector('[data-dia="Segunda-feira"]');
+            if (programacaoElement) {
+              programacaoElement.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
         >
           Garanta sua Vaga
         </motion.button>
