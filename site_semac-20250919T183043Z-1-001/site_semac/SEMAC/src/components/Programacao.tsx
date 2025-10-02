@@ -186,7 +186,7 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({
     //'https://semac-backend-app.onrender.com/inscrito'
 
     try {
-      await axios.post("https://a6f6775ac106.ngrok-free.app/inscrito", {
+      await axios.post("https://a6f6775ac106.ngrok-free.app/inscricao", {
         nome_completo: formData.nome_completo,
         email: formData.email,
         palestras: [{ id: evento.id }],
