@@ -106,7 +106,7 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({ isOpen, onClose, evento
   }
 
   setMensagem({ tipo: 'erro', texto: mensagemFinal });
-  console.error("Erro inscrição:", error);
+  console.error("Erro na inscrição:", error);
 } finally {
   setIsLoading(false);
 }
