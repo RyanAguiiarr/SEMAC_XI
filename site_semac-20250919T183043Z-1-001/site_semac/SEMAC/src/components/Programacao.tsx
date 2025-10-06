@@ -162,12 +162,18 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({
   onClose,
   evento,
 }) => {
-  const [formData, setFormData] = useState({ nome_completo: "", email: "" });
+  const [formData, setFormData] = useState({
+    nome_completo: "",
+    email: "",
+    confirmar_email: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [mensagem, setMensagem] = useState<{
     tipo: "sucesso" | "erro" | null;
     texto: string;
   }>({ tipo: null, texto: "" });
+
+  const [emailError, setEmailError] = useState("");
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const card = event.currentTarget;
@@ -181,6 +187,13 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!evento) return;
+
+    if (formData.email !== formData.confirmar_email) {
+      setEmailError("Os emails não correspondem");
+      return;
+    }
+
+    setEmailError("");
     setIsLoading(true);
     setMensagem({ tipo: null, texto: "" });
 
@@ -202,7 +215,7 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({
       });
 
       setTimeout(() => {
-        setFormData({ nome_completo: "", email: "" });
+        setFormData({ nome_completo: "", email: "", confirmar_email: "" });
         onClose();
         setMensagem({ tipo: null, texto: "" });
       }, 2000);
@@ -294,6 +307,22 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({
                     required
                     disabled={isLoading}
                   />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="confirmar_email">Confirmar E-mail</label>
+                  <input
+                    type="email"
+                    id="confirmar_email"
+                    name="confirmar_email"
+                    value={formData.confirmar_email}
+                    onChange={handleChange}
+                    placeholder="confirme seu email"
+                    required
+                    disabled={isLoading}
+                  />
+                  {emailError && (
+                    <div className="email-error">{emailError}</div>
+                  )}
                 </div>
                 {mensagem.tipo && (
                   <div className={`mensagem ${mensagem.tipo}`}>
