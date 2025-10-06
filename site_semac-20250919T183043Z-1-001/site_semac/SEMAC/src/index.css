@@ -1,17 +1,17 @@
 /* src/index.css */
 
 /* ...sua importação de fontes e :root com variáveis de cores continua aqui... */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap");
 
 :root {
   --cor-fundo: #0d0513;
   --cor-principal: #330859;
-  --roxo-brilhante: #4F238C;
-  --magenta-detalhe: #720F4B;
+  --roxo-brilhante: #4f238c;
+  --magenta-detalhe: #720f4b;
   --texto-principal: #f0e6ff;
   --texto-secundario: #c5a6f3;
-  --brilho-neon: 0 0 5px #c5a6f3, 0 0 10px #c5a6f3, 0 0 15px #4F238C;
+  --brilho-neon: 0 0 5px #c5a6f3, 0 0 10px #c5a6f3, 0 0 15px #4f238c;
 }
 
 * {
@@ -23,28 +23,34 @@
 /* === A MÁGICA ACONTECE AQUI === */
 
 @keyframes gradient-flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 body {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   color: var(--texto-principal);
-  
+
   /* 1. O Gradiente de Fundo */
-  background: linear-gradient(-45deg, #0d0513, #1a0529, #330859, #4F238C);
+  background: linear-gradient(-45deg, #0d0513, #1a0529, #330859, #4f238c);
   background-size: 400% 400%; /* Tamanho grande para a animação ser suave */
-  
+
   /* 2. A Animação Fluida */
   animation: gradient-flow 15s ease-in-out infinite; /* Duração longa para sutileza */
-  
+
   position: relative; /* Necessário para o pseudo-elemento de ruído */
 }
 
 /* 3. A Textura de Ruído (Opcional, mas dá um toque premium) */
 body::after {
-  content: '';
+  content: "";
   position: fixed;
   top: 0;
   left: 0;

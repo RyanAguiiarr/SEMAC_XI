@@ -131,9 +131,11 @@ const Header: React.FC = () => {
           whileHover={{ scale: 1.05, boxShadow: "0 0 25px #764ABC" }}
           whileTap={{ scale: 0.95 }}
           onClick={() => {
-            const programacaoElement = document.querySelector('[data-dia="Segunda-feira"]');
+            const programacaoElement = document.querySelector(
+              '[data-dia="Segunda-feira"]'
+            );
             if (programacaoElement) {
-              programacaoElement.scrollIntoView({ behavior: 'smooth' });
+              programacaoElement.scrollIntoView({ behavior: "smooth" });
             }
           }}
         >

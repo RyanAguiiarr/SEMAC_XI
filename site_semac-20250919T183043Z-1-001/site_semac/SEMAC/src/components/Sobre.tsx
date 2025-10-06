@@ -1,18 +1,33 @@
 // src/components/Sobre.tsx
-import React from 'react';
-import { motion } from 'framer-motion';
-import './Sobre.css';
+import React from "react";
+import { motion } from "framer-motion";
+import "./Sobre.css";
 
 // Definição das features para reutilização
 const features = [
-  { icon: '💡', title: 'Palestras de Vanguarda', description: 'Explore as fronteiras da IA, Cibersegurança e Desenvolvimento Web.' },
-  { icon: '🚀', title: 'Workshops Práticos', description: 'Aprenda fazendo com minicursos intensivos nas tecnologias mais atuais.' },
-  { icon: '🤝', title: 'Networking de Alto Nível', description: 'Conecte-se com empresas, palestrantes e futuros colegas de trabalho.' },
+  {
+    icon: "💡",
+    title: "Palestras de Vanguarda",
+    description:
+      "Explore as fronteiras da IA, Cibersegurança e Desenvolvimento Web.",
+  },
+  {
+    icon: "🚀",
+    title: "Workshops Práticos",
+    description:
+      "Aprenda fazendo com minicursos intensivos nas tecnologias mais atuais.",
+  },
+  {
+    icon: "🤝",
+    title: "Networking de Alto Nível",
+    description:
+      "Conecte-se com empresas, palestrantes e futuros colegas de trabalho.",
+  },
 ];
 
 const fadeInUpVariants = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 }
+  animate: { opacity: 1, y: 0 },
 };
 
 const Sobre: React.FC = () => {

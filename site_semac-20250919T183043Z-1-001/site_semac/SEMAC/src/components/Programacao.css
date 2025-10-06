@@ -1,20 +1,38 @@
 /* --- ANIMAÇÕES GERAIS --- */
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes glow {
-  0% { box-shadow: 0 0 5px rgba(79, 35, 140, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(79, 35, 140, 0.8); }
-  100% { box-shadow: 0 0 5px rgba(79, 35, 140, 0.5); }
+  0% {
+    box-shadow: 0 0 5px rgba(79, 35, 140, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(79, 35, 140, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(79, 35, 140, 0.5);
+  }
 }
 
 @keyframes borderGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* --- CONTAINER PRINCIPAL --- */
@@ -30,7 +48,7 @@
 }
 
 .dia-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
@@ -44,7 +62,7 @@
 }
 
 .horario-title {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 1.5rem;
   color: #c5a6f3;
   margin-bottom: 1.5rem;
@@ -52,7 +70,8 @@
   border-left: 3px solid #8a4dff;
 }
 
-.palestras-group, .minicurso-group {
+.palestras-group,
+.minicurso-group {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
@@ -86,7 +105,11 @@
 .card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(79, 35, 140, 0.4) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(79, 35, 140, 0.4) 0%,
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -96,10 +119,14 @@
 }
 
 .evento-card::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(138, 77, 255, 0.15) 0%, transparent 40%);
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(138, 77, 255, 0.15) 0%,
+    transparent 40%
+  );
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s;
@@ -153,12 +180,12 @@
   background: linear-gradient(45deg, #4f238c, #720f4b);
   color: #fff;
   border: none;
-  border-radius: 12px;  /* Duolingo-style rectangular button */
+  border-radius: 12px; /* Duolingo-style rectangular button */
   font-family: "Rajdhani", sans-serif;
   font-size: 1.1rem;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.5px;  /* Improved text spacing */
+  letter-spacing: 0.5px; /* Improved text spacing */
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -173,7 +200,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: 0.5s;
 }
 
@@ -220,20 +252,29 @@
 }
 
 .modal-container::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: -1px;
-  background: linear-gradient(45deg, transparent, rgba(138, 77, 255, 0.4), transparent);
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(138, 77, 255, 0.4),
+    transparent
+  );
   z-index: -2;
   background-size: 200% 200%;
   animation: borderGlow 3s linear infinite;
 }
 
 .modal-container::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(138, 77, 255, 0.15) 0%, transparent 40%);
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(138, 77, 255, 0.15) 0%,
+    transparent 40%
+  );
   pointer-events: none;
   z-index: -1;
 }
@@ -267,7 +308,7 @@
 }
 
 .modal-content h2 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 2rem;
   font-weight: 700;
   color: #c5a6f3;
@@ -344,7 +385,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: 0.5s;
 }
 

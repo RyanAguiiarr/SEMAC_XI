@@ -27,11 +27,15 @@
 
 /* Estilos para a Logo (AJUSTADO) */
 .header-logo {
-  width: clamp(120px, 15vw, 200px); /* Tamanho responsivo: entre 120px e 200px */
+  width: clamp(
+    120px,
+    15vw,
+    200px
+  ); /* Tamanho responsivo: entre 120px e 200px */
   height: auto; /* Mantém a proporção da imagem */
   object-fit: contain; /* Garante que a imagem inteira seja visível */
-  margin-bottom: 1.5rem; 
-  margin-top: -8rem;/* Mais espaço abaixo da logo */
+  margin-bottom: 1.5rem;
+  margin-top: -8rem; /* Mais espaço abaixo da logo */
   /* SEM borda e SEM sombra para mais destaque */
 }
 
@@ -45,7 +49,7 @@
 
 /* Título principal ajustado */
 .event-title {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-weight: 400; /* Mais fino para dar contraste */
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: 0.2em; /* Mais espaçado */
@@ -58,12 +62,12 @@
 
 /* Estilo de destaque para o acrônimo SEMAC */
 .event-acronym {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   font-size: clamp(3.5rem, 10vw, 7rem);
   text-transform: uppercase;
   line-height: 1;
-  background: linear-gradient(135deg, #E91E63 0%, #9C27B0 50%, #4F238C 100%);
+  background: linear-gradient(135deg, #e91e63 0%, #9c27b0 50%, #4f238c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 25px rgba(233, 30, 99, 0.5);
@@ -106,7 +110,12 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: 0.5s;
 }
 
@@ -121,9 +130,15 @@
 }
 
 @keyframes glow {
-  0% { box-shadow: 0 0 5px rgba(79, 35, 140, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(79, 35, 140, 0.8); }
-  100% { box-shadow: 0 0 5px rgba(79, 35, 140, 0.5); }
+  0% {
+    box-shadow: 0 0 5px rgba(79, 35, 140, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(79, 35, 140, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(79, 35, 140, 0.5);
+  }
 }
 
 .scroll-indicator {
@@ -157,10 +172,14 @@
 }
 
 .countdown-container::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(79, 35, 140, 0.4) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(79, 35, 140, 0.4) 0%,
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -194,7 +213,7 @@
   font-weight: bold;
   color: #c5a6f3;
   text-shadow: 0 0 15px rgba(138, 77, 255, 0.5);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   line-height: 1;
 }
 
@@ -207,7 +226,7 @@
   margin-top: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
 }
 
 @media (max-width: 768px) {
