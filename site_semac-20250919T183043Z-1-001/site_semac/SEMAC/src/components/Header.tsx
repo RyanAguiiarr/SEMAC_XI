@@ -29,7 +29,7 @@ const Header: React.FC = () => {
   });
 
   React.useEffect(() => {
-    const eventDate = new Date("2025-10-23T09:00:00").getTime();
+    const eventDate = new Date("2025-10-20T19:00:00").getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
