@@ -47,7 +47,7 @@ const programacao: Evento[] = [
     horario: "21:00 - 22:30",
     tipo: "Palestra",
     palestrante: "Ronaldo Martins",
-    titulo: "Intrusões em aplicações web",
+    titulo: "Segurança de Software: Responsabilidade que começa no código",
   },
   {
     id: 204,
@@ -201,7 +201,7 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({
 
     try {
       await axios.post(
-        `https://607e6b0f4734.ngrok-free.app/inscricao?palestra_id=${evento.id}`,
+        `https://10927afaea90.ngrok-free.app/inscricao?palestra_id=${evento.id}`,
         {
           nome_completo: formData.nome_completo,
           email: formData.email,
