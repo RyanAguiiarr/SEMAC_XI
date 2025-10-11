@@ -201,7 +201,7 @@ const InscricaoModal: React.FC<InscricaoModalProps> = ({
 
     try {
       await axios.post(
-        `https://d93585206eed.ngrok-free.app/inscricao?palestra_id=${evento.id}`,
+        `https://b90b1b40b7b0.ngrok-free.app/inscricao?palestra_id=${evento.id}`,
         {
           nome_completo: formData.nome_completo,
           email: formData.email,
